@@ -4,18 +4,89 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Log Dashboard</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            font-size: 36px;
+        }
+
+        h2 {
+            color: #4a4a4a;
+            font-size: 28px;
+            border-bottom: 2px solid #ddd;
+            padding-bottom: 10px;
+            margin-top: 40px;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        img {
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 20px;
+        }
+
+        .plot-container, .image-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        .plot-container img, .image-container img {
+            max-width: 100%;
+            height: auto;
+            width: 300px;
+            border: 2px solid #ddd;
+        }
+
+        .plot-container img {
+            width: 400px;
+            max-height: 300px;
+        }
+
+        .image-container img {
+            width: 300px;
+        }
+
+        .section {
+            margin-bottom: 50px;
+        }
+    </style>
 </head>
 <body>
     <h1>Log Analysis Dashboard</h1>
 
-    <h2>Plots</h2>
-    {% for plot in plot_images %}
-        <img src="data:image/png;base64,{{ plot }}" alt="Plot">
-    {% endfor %}
+    <div class="content">
+        <div class="section">
+            <h2>Plots</h2>
+            <div class="plot-container">
+                {% for plot in plot_images %}
+                    <img src="data:image/png;base64,{{ plot }}" alt="Plot">
+                {% endfor %}
+            </div>
+        </div>
 
-    <h2>Decoded Images</h2>
-    {% for image in image_files %}
-        <img src="{{ image }}" alt="Decoded Image" width="300px">
-    {% endfor %}
+        <div class="section">
+            <h2>Decoded Images</h2>
+            <div class="image-container">
+                {% for image in image_files %}
+                    <img src="{{ image }}" alt="Decoded Image" width="300px">
+                {% endfor %}
+            </div>
+        </div>
+    </div>
 </body>
 </html>
