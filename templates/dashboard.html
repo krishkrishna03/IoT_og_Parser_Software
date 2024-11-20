@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Dashboard</title>
+</head>
+<body>
+    <h1>Log Analysis Dashboard</h1>
+
+    <h2>Plots</h2>
+    {% for plot in plot_images %}
+        <img src="data:image/png;base64,{{ plot }}" alt="Plot">
+    {% endfor %}
+
+    <h2>Decoded Images</h2>
+    {% for image in image_files %}
+        <img src="{{ image }}" alt="Decoded Image" width="300px">
+    {% endfor %}
+</body>
+</html>
